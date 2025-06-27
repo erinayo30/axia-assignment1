@@ -25,7 +25,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["reading", "coding", "traveling", "music"],
     },
+    kyc: {
+      type: mongoose.Types.ObjectId,
+      ref: "KYC",
+    },
+    posts: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "post",
+      },
+    ],
   },
   { timestamps: true }
 );
-module.exports = userSchema;
+const userModel = mongoose.model("User", userSchema);
+module.exports = userModel;
